@@ -83,6 +83,9 @@ def main():
     user_seq, max_item, valid_rating_matrix, test_rating_matrix, _ = get_user_seqs(
         args.data_file
     )
+    # [[영화1,영화3],[영화2,영화5,영화7],...]
+
+    # sparse 행렬 생성
 
     item2attribute, attribute_size = get_item2attribute_json(item2attribute_file)
 
@@ -103,6 +106,7 @@ def main():
     checkpoint = args_str + ".pt"
     args.checkpoint_path = os.path.join(args.output_dir, checkpoint)
 
+    # [[영화1,영화3],[영화2,영화5,영화7],...]
     train_dataset = SASRecDataset(args, user_seq, data_type="train")
     train_sampler = RandomSampler(train_dataset)
     train_dataloader = DataLoader(

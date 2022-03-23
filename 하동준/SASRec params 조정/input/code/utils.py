@@ -108,10 +108,18 @@ def generate_rating_matrix_valid(user_seq, num_users, num_items):
             data.append(1)
 
     row = np.array(row)
+    # [유저1, 유저1, 유저2, 유저3,...]
     col = np.array(col)
+    # [유저1의영화1,유저1의영화2,유저2의영화1,유저3의영화1,...]
     data = np.array(data)
+    # [1,1,1,1,..]
     rating_matrix = csr_matrix((data, (row, col)), shape=(num_users, num_items))
-
+    '''
+    [[1,0,0,1,1,..,0,0],
+     [0,0,1,1,....,0,0],
+     ......
+    ]
+    '''
     return rating_matrix
 
 
@@ -172,13 +180,17 @@ def generate_submission_file(data_file, preds):
 def get_user_seqs(data_file):
     rating_df = pd.read_csv(data_file)
     lines = rating_df.groupby("user")["item"].apply(list)
+    # 유저1: [영화1,영화2,...]
     user_seq = []
     item_set = set()
     for line in lines:
-
+        # [영화1, 영화3,...]
         items = line
         user_seq.append(items)
+        # [[영화1,영화3],[영화2,영화5,영화7],...]
         item_set = item_set | set(items)
+        # 평가가 이루어진 영화들을 겹치지않는 set로 만들어
+
     max_item = max(item_set)
 
     num_users = len(lines)
@@ -205,10 +217,14 @@ def get_user_seqs_long(data_file):
     long_sequence = []
     item_set = set()
     for line in lines:
+        # [영화1, 영화3,...]
         items = line
         long_sequence.extend(items)
+        # [영화1,영화3,영화2,영화5,영화7,...]
         user_seq.append(items)
+        # [[영화1,영화3],[영화2,영화5,영화7],...]
         item_set = item_set | set(items)
+        # 평가가 이루어진 영화들을 겹치지않는 set로 만들어
     max_item = max(item_set)
 
     return user_seq, max_item, long_sequence
@@ -217,11 +233,14 @@ def get_user_seqs_long(data_file):
 def get_item2attribute_json(data_file):
     item2attribute = json.loads(open(data_file).readline())
     attribute_set = set()
+    # 1 [8, 12, 13, 5, 9]
     for item, attributes in item2attribute.items():
         attribute_set = attribute_set | set(attributes)
     attribute_size = max(attribute_set)
     return item2attribute, attribute_size
-
+    # 사용된 장르 set로
+# {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+# 17
 
 def get_metric(pred_list, topk=10):
     NDCG = 0.0
