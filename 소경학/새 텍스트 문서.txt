@@ -1,0 +1,9 @@
+Bert4Rec
+
+epoch : 675
+max_len : 50
+Recall@10 : 0.0679
+
+epoch : 675
+max_len : 70
+Recall@10 : 0.0724
