@@ -8,6 +8,10 @@ epoch : 675
 max_len : 70
 Recall@10 : 0.0724
 
+epoch : 675
+max_len : 100
+Recall@10 : 0.0624
+
 epoch : 975
 max_len : 100
 hidden_units : 64
