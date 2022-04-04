@@ -4,6 +4,10 @@ epoch : 2000
 max_len : 70
 Recall@10 : 0.1075
 
+epoch : 4000
+max_len : 70
+Recall@10 : 0.1070
+
 epoch : 675
 max_len : 50
 Recall@10 : 0.0679
@@ -15,6 +19,11 @@ Recall@10 : 0.0724
 epoch : 200
 max_len : 70
 Recall@10 : 0.0722
+
+epoch : 200
+max_len : 70
+num_layers : 4
+Recall@10 : 0.0691
 
 epoch : 675
 max_len : 70
