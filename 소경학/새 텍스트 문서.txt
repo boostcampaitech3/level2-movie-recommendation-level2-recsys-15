@@ -1,5 +1,13 @@
 Bert4Rec
 
+epoch : 2000
+max_len : 70
+Recall@10 : 0.1075
+
+epoch : 4000
+max_len : 70
+Recall@10 : 0.1070
+
 epoch : 675
 max_len : 50
 Recall@10 : 0.0679
@@ -7,3 +15,37 @@ Recall@10 : 0.0679
 epoch : 675
 max_len : 70
 Recall@10 : 0.0724
+
+epoch : 200
+max_len : 70
+Recall@10 : 0.0722
+
+epoch : 200
+max_len : 70
+num_layers : 4
+Recall@10 : 0.0691
+
+epoch : 675
+max_len : 70
+mask_prob : 0.20
+Recall@10 : 0.0607
+
+epoch : 675
+max_len : 85
+Recall@10 : 0.0627
+
+epoch : 675
+max_len : 100
+Recall@10 : 0.0624
+
+epoch : 975
+max_len : 100
+hidden_units : 64
+Recall@10 : 0.0634
+
+epoch : 870
+max_len : 200
+hidden_units : 64
+num_layers : 4
+lr : 0.0001
+Recall@10 : 0.0529
