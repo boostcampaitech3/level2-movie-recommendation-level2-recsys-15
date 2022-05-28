@@ -239,7 +239,7 @@ def get_item2attribute_json(data_file):
     attribute_size = max(attribute_set)
     return item2attribute, attribute_size
     # 사용된 장르 set로
-# {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+# {0, 1, 2, 3, 4, 5, 6, 7_8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
 # 17
 
 def get_metric(pred_list, topk=10):
